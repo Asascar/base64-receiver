@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Netbanking.RemessaArquivo.API.Models;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Netbanking.RemessaArquivo.API.Controllers
 {
@@ -29,7 +25,7 @@ namespace Netbanking.RemessaArquivo.API.Controllers
             return await _context.RemessaItems.ToListAsync();
         }
 
-        // GET: api/RemessaItems/id
+        // GET: api/RemessaItems/5
         [HttpGet("{id}")]
         public async Task<ActionResult<RemessaItem>> GetRemessaItem(long id)
         {
@@ -43,8 +39,7 @@ namespace Netbanking.RemessaArquivo.API.Controllers
             return remessaItem;
         }
 
-        // PUT: api/RemessaItems/id
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        // PUT: api/RemessaItems/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutRemessaItem(long id, RemessaItem remessaItem)
         {
@@ -75,7 +70,6 @@ namespace Netbanking.RemessaArquivo.API.Controllers
         }
 
         // POST: api/RemessaItems
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<RemessaItem>> PostRemessaItem(RemessaItem remessaItem)
         {
@@ -86,7 +80,7 @@ namespace Netbanking.RemessaArquivo.API.Controllers
             return CreatedAtAction(nameof(GetRemessaItem), new { id = remessaItem.Id }, remessaItem);
         }
 
-        // DELETE: api/RemessaItems/id
+        // DELETE: api/RemessaItems/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteRemessaItem(long id)
         {
