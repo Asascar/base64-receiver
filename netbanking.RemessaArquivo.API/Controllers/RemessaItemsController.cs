@@ -29,7 +29,7 @@ namespace Netbanking.RemessaArquivo.API.Controllers
             return await _context.RemessaItems.ToListAsync();
         }
 
-        // GET: api/RemessaItems/5
+        // GET: api/RemessaItems/id
         [HttpGet("{id}")]
         public async Task<ActionResult<RemessaItem>> GetRemessaItem(long id)
         {
@@ -43,7 +43,7 @@ namespace Netbanking.RemessaArquivo.API.Controllers
             return remessaItem;
         }
 
-        // PUT: api/RemessaItems/5
+        // PUT: api/RemessaItems/id
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutRemessaItem(long id, RemessaItem remessaItem)
@@ -86,7 +86,7 @@ namespace Netbanking.RemessaArquivo.API.Controllers
             return CreatedAtAction(nameof(GetRemessaItem), new { id = remessaItem.Id }, remessaItem);
         }
 
-        // DELETE: api/RemessaItems/5
+        // DELETE: api/RemessaItems/id
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteRemessaItem(long id)
         {
