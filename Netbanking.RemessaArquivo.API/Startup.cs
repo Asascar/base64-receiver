@@ -33,10 +33,10 @@ namespace Netbanking.RemessaArquivo.API
 
             services.AddDbContext<RemessaContext>(opt =>
                                                opt.UseInMemoryDatabase("TodoList"));
-            //services.AddSwaggerGen(c =>
-            //{
-            //    c.SwaggerDoc("v1", new OpenApiInfo { Title = "TodoApi", Version = "v1" });
-            //});
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Remessa", Version = "v1" });
+            });
 
            
         }
@@ -47,8 +47,8 @@ namespace Netbanking.RemessaArquivo.API
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                //app.UseSwagger();
-                //app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Netbanking.RemessaArquivo.API v1"));
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Netbanking.RemessaArquivo.API v1"));
             }
 
             app.UseHttpsRedirection();
