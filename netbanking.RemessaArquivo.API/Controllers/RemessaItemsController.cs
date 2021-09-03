@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Netbanking.RemessaArquivo.API.Models;
+using Netbanking.RemessaArquivo.API.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -75,6 +77,15 @@ namespace Netbanking.RemessaArquivo.API.Controllers
         {
 
             _context.RemessaItems.Add(remessaItem);
+            //enviando o arquivo recebido para outra API para o tratamento do mesmo
+            try
+            {
+                await RemessaService.Validador(remessaItem);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
             await _context.SaveChangesAsync();
 
             return CreatedAtAction(nameof(GetRemessaItem), new { id = remessaItem.Id }, remessaItem);
