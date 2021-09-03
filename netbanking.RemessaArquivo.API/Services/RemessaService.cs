@@ -30,7 +30,7 @@ namespace Netbanking.RemessaArquivo.API.Services
 
                 if (response.IsSuccessStatusCode)
                 {
-                    Console.WriteLine($"Created at {remessaItem}");
+                    Console.WriteLine($"Created at {remessaItem.Id}");
                 }
                 
 
